@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7gquld5ly5s2"]
+
+[ext_resource type="PackedScene" uid="uid://c6ynekygxx5ph" path="res://assets/scenes/Enemy.tscn" id="1_l1v10"]
+[ext_resource type="Script" path="res://assets/scenes/boar.gd" id="2_4y6vl"]
+
+[node name="Boar" instance=ExtResource("1_l1v10")]
+position = Vector2(0, -15)
+script = ExtResource("2_4y6vl")
+
+[node name="WallChecker" type="RayCast2D" parent="Graphics" index="1"]
+position = Vector2(-11, 4)
+target_position = Vector2(-15, 0)
+
+[node name="PlayerChecker" type="RayCast2D" parent="Graphics" index="2"]
+position = Vector2(-11, 4)
+target_position = Vector2(-59, -1)
+collision_mask = 2
+
+[node name="FloorChecker" type="RayCast2D" parent="Graphics" index="3"]
+position = Vector2(-11, 4)
+target_position = Vector2(0, 14)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 3)
+
+[node name="CalmDownTimer" type="Timer" parent="." index="4"]
+wait_time = 2.5
+one_shot = true
